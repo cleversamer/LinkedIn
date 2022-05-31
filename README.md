@@ -1,6 +1,4 @@
-# Project Title 🚀
-
-Simple overview of use/purpose.
+# LinkedIn Clone 🚀
 
 ## 🔴 Live Demo
 
@@ -8,7 +6,7 @@ Not live yet...
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+LinkedIn Clone with React & Firebase
 
 ## Getting Started
 
@@ -32,7 +30,7 @@ An in-depth paragraph about your project and overview of use.
 
 ## Authors
 
-- [Samer A.](https://twitter.com/ssadawi__)
+- [Samer A.](https://twitter.com/cleversamerr)
 
 ## Version History
 
