@@ -1,19 +1,20 @@
-import React from "react";
+import styled from "styled-components";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "./pages/home";
-import NotFound from "./pages/not-found";
-import "./css/app.css";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
-    <div className="app">
+    <Container>
       <Routes>
         <Route path="/not-found" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Navigate to="/not-found" replace />} />
       </Routes>
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div``;
 
 export default App;
