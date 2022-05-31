@@ -22,10 +22,8 @@ const Image = styled.img`
   margin-bottom: 180px;
 
   @media screen and (min-width: 1200px) {
-    .not-found__img {
-      width: 30%;
-      margin-bottom: 140px;
-    }
+    width: 30%;
+    margin-bottom: 140px;
   }
 `;
 

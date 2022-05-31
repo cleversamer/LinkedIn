@@ -6,7 +6,7 @@ Not live yet...
 
 ## Description
 
-LinkedIn Clone with React & Firebase
+LinkedIn Clone with React, Redux, Styled Components, and Firebase.
 
 ## Getting Started
 
@@ -15,6 +15,7 @@ LinkedIn Clone with React & Firebase
 - React
 - React DOM
 - React Router DOM
+- Styled Components
 
 ### Installing
 
