@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Ad from "../components/Ad";
 import Leftside from "../components/LeftSide";
+import Rightside from "../components/RightSide";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
 
         {/* <Main /> */}
 
-        {/* <Rightside /> */}
+        <Rightside />
       </Layout>
     </Container>
   );
