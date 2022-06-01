@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Ad from "../components/Ad";
 import Leftside from "../components/LeftSide";
+import Main from "../components/Main";
 import Rightside from "../components/RightSide";
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
       <Layout>
         <Leftside />
 
-        {/* <Main /> */}
+        <Main />
 
         <Rightside />
       </Layout>
@@ -21,8 +22,14 @@ const Home = () => {
 };
 
 const Container = styled.div`
-  padding-top: 52px;
+  padding: 0 20px;
+  padding-top: 56px;
   max-width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+    padding-top: 56px;
+  }
 `;
 
 const Layout = styled.div`

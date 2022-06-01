@@ -23,4 +23,19 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
+  transition-duration: 167ms;
+}
+
+a:active {
+  transform: scale(0.99);
+}
+
+button {
+  cursor: pointer;
+  transition-duration: 167ms;
+}
+
+button:active {
+  transform: scale(0.99);
 }
