@@ -19,7 +19,8 @@ const Container = styled.section`
   box-sizing: content-box;
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 70px;
+  margin-bottom: 0;
   min-height: 50px;
   padding-bottom: 0;
   padding: 16px 0;

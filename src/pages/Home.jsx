@@ -9,14 +9,10 @@ const Home = () => {
   return (
     <Container>
       <Header />
-
       <Ad />
-
       <Layout>
         <LeftSide />
-
         <Main />
-
         <RightSide />
       </Layout>
     </Container>
