@@ -5,9 +5,11 @@
 
 # testing
 /coverage
+*.log
 
 # production
 /build
+/.firebase
 
 # misc
 .DS_Store
