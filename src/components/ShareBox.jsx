@@ -34,44 +34,44 @@ const ShareBox = () => {
 };
 
 const CommonCard = styled.div`
-  text-align: center;
-  overflow: hidden;
-  margin-bottom: 8px;
   background-color: #fff;
   border-radius: 5px;
-  position: relative;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+  margin-bottom: 8px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
 `;
 
 const Container = styled(CommonCard)`
+  background-color: #fff;
+  color: #958b7b;
   display: flex;
   flex-direction: column;
-  color: #958b7b;
   margin: 0 0 8px;
-  background-color: #fff;
 
   div {
     button {
+      align-items: center;
       color: rgba(0, 0, 0, 06);
+      display: flex;
       font-size: 14px;
       font-weight: 600;
       line-height: 1.5;
       min-height: 48px;
-      display: flex;
-      align-items: center;
     }
 
     &:first-child {
-      display: flex;
       align-items: center;
+      display: flex;
       padding: 8px 16px 0px 16px;
 
       img {
-        width: 45px;
         border-radius: 50%;
-        margin-right: 10px;
         cursor: pointer;
+        margin-right: 10px;
         transition-duration: 167ms;
+        width: 45px;
 
         &:active {
           transform: scale(0.97);
@@ -79,15 +79,15 @@ const Container = styled(CommonCard)`
       }
 
       button {
-        margin: 4px 0;
-        flex-grow: 1;
-        border-radius: 35px;
-        padding-left: 16px;
-        border: 1px solid rgba(0, 0, 0, 0.15);
         background-color: #fff;
-        text-align: left;
+        border-radius: 35px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
         color: rgba(0, 0, 0, 0.6);
         cursor: pointer;
+        flex-grow: 1;
+        margin: 4px 0;
+        padding-left: 16px;
+        text-align: left;
         transition-duration: 167ms;
 
         &:active {

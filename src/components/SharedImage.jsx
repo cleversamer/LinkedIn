@@ -13,15 +13,15 @@ const SharedImage = () => {
 };
 
 const Container = styled.div`
-  margin-top: 8px;
-  width: 100%;
-  display: block;
-  position: relative;
   background-color: #f9fafb;
+  display: block;
+  margin-top: 8px;
+  position: relative;
+  width: 100%;
 
   img {
-    width: 100%;
     object-fit: contain;
+    width: 100%;
   }
 `;
 

@@ -20,21 +20,21 @@ const Navbar = () => {
 };
 
 const Nav = styled.nav`
-  position: relative;
-  max-width: 1128px;
-  margin: auto;
-  padding: 12px 0 16px;
+  align-items: center;
   display: flex;
   flex-wrap: no-wrap;
   justify-content: space-between;
-  align-items: center;
+  margin: auto;
+  max-width: 1128px;
+  padding: 12px 0 16px;
+  position: relative;
 `;
 
 const Logo = styled.img`
-  width: 135px;
+  cursor: pointer;
   height: 34px;
   object-fit: contain;
-  cursor: pointer;
+  width: 135px;
 
   @media screen and (max-width: 768px) {
     padding: 0 5px;
@@ -42,19 +42,19 @@ const Logo = styled.img`
 `;
 
 const Join = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `;
 
 const JoinBtn = styled.span`
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
   display: inline-block;
   font-size: 16px;
-  padding: 10px 12px;
-  color: rgba(0, 0, 0, 0.6);
   margin-right: 12px;
-  border-radius: 4px;
-  cursor: pointer;
+  padding: 10px 12px;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);
@@ -72,18 +72,18 @@ const JoinBtn = styled.span`
 `;
 
 const SignInBtn = styled.span`
-  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 24px;
   box-shadow: inset 0 0 0 1px #0a66c2;
   color: #0a66c2;
-  border-radius: 24px;
-  transition-duration: 167ms;
+  cursor: pointer;
+  display: inline-block;
   font-size: 16px;
   font-weight: 600;
   line-height: 40px;
   padding: 0 20px;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
+  transition-duration: 167ms;
 
   &:hover {
     background-color: rgba(112, 181, 249, 0.15);

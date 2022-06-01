@@ -23,13 +23,13 @@ const Hero = () => {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 40px;
   padding-left: 12vw;
+  padding-top: 40px;
 
   @media screen and (max-width: 768px) {
+    align-items: center;
     flex-direction: column;
     padding-left: 0;
-    align-items: center;
   }
 `;
 
@@ -44,25 +44,25 @@ const HeroLeft = styled.div`
 `;
 
 const Heading = styled.h1`
-  padding-bottom: 0;
-  width: 100%;
+  color: #2977c9;
   font-size: 50px;
   font-weight: 200;
   line-height: 70px;
-  color: #2977c9;
+  padding-bottom: 0;
+  width: 100%;
 
   @media screen and (max-width: 768px) {
-    text-align: center;
     font-size: 24px;
     font-weight: 300;
-    width: 100%;
     line-height: 2;
+    text-align: center;
+    width: 100%;
   }
 `;
 
 const HeroImg = styled.img`
-  width: 40vw;
   object-fit: contain;
+  width: 40vw;
 
   @media screen and (max-width: 768px) {
     width: 90vw;
@@ -70,19 +70,19 @@ const HeroImg = styled.img`
 `;
 
 const Google = styled.button`
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #fff;
-  width: 300px;
-  height: 56px;
   border-radius: 28px;
-  z-index: 0;
-  cursor: pointer;
-  transition-duration: 167ms;
-  font-size: 20px;
   color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  height: 56px;
+  justify-content: center;
+  margin-top: 40px;
+  transition-duration: 167ms;
+  width: 300px;
+  z-index: 0;
 
   &:hover {
     background-color: rgba(207, 207, 207, 0.25);
@@ -94,10 +94,10 @@ const Google = styled.button`
   }
 
   @media screen and (max-width: 768px) {
-    margin-top: 20px;
     font-size: 16px;
-    width: 250px;
     height: 48px;
+    margin-top: 20px;
+    width: 250px;
 
     &:active {
       transform: scale(0.98);

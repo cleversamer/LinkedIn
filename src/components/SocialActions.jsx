@@ -27,19 +27,19 @@ const SocialActions = () => {
 };
 
 const Container = styled.div`
-  display: flex;
   align-items: center;
-  padding: 4px 8px;
+  display: flex;
   min-height: 40px;
-  overflow-y: hidden;
   overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 8px;
 
   button {
-    display: inline-flex;
     align-items: center;
-    padding: 8px;
     color: #0a66c2;
+    display: inline-flex;
     margin-right: 10px;
+    padding: 8px;
 
     &:active {
       transform: scale(0.98);

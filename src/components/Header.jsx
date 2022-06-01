@@ -103,40 +103,40 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   margin: 0 auto;
-  min-height: 100%;
   max-width: 1128px;
+  min-height: 100%;
 `;
 
 const Logo = styled.span`
-  margin-right: 8px;
   font-size: 0px;
+  margin-right: 8px;
 `;
 
 const Search = styled.div`
-  opacity: 1;
   flex-grow: 1;
+  opacity: 1;
   position: relative;
 
   & > div {
     max-width: 280px;
 
     input {
+      background-color: #eef3f8;
+      border-color: #dce6f1;
+      border-radius: 2px;
       border: none;
       box-shadow: none;
-      background-color: #eef3f8;
-      border-radius: 2px;
       color: rgba(0, 0, 0, 0.9);
-      width: 218px;
-      padding: 0 8px 0 40px;
-      line-height: 1.75;
-      font-weight: 400;
       font-size: 14px;
+      font-weight: 400;
       height: 34px;
-      border-color: #dce6f1;
+      line-height: 1.75;
+      padding: 0 8px 0 40px;
       vertical-align: text-top;
+      width: 218px;
     }
   }
 
@@ -145,25 +145,25 @@ const Search = styled.div`
       width: auto;
 
       input {
-        width: 100%;
         padding-right: 30px;
+        width: 100%;
       }
     }
   }
 `;
 
 const SearchIcon = styled.div`
-  width: 40px;
-  position: absolute;
-  z-index: 1;
-  top: 10px;
-  left: 2px;
+  align-items: center;
   border-radius: 0 2px 2px 0;
-  margin: 0;
-  pointer-events: none;
   display: flex;
   justify-content: center;
-  align-items: center;
+  left: 2px;
+  margin: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  width: 40px;
+  z-index: 1;
 
   @media (max-width: 768px) {
     margin-left: 5px;
@@ -171,18 +171,19 @@ const SearchIcon = styled.div`
 `;
 
 const Nav = styled.nav`
-  margin-left: auto;
   display: block;
+  margin-left: auto;
   overflow: auto;
 
   @media (max-width: 768px) {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     background: white;
-    width: 100%;
-    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    bottom: 0;
     box-sizing: border-box;
+    left: 0;
+    padding: 0px 10px;
+    position: fixed;
+    width: 100%;
   }
 `;
 
@@ -190,24 +191,25 @@ const NavListWrap = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   list-style-type: none;
+
   .active {
     span:after {
       content: "";
-      transform: scaleX(1);
       border-bottom: 2px solid var(--white, #fff);
+      border-color: rgba(0, 0, 0, 0.9);
       bottom: 0;
       left: 0;
       position: absolute;
+      transform: scaleX(1);
       transition: transform 0.2s ease-in-out;
       width: 100%;
-      border-color: rgba(0, 0, 0, 0.9);
     }
   }
 `;
 
 const NavList = styled.li`
-  display: flex;
   align-items: center;
+  display: flex;
   margin-right: 10px;
 
   a {
@@ -225,14 +227,16 @@ const NavList = styled.li`
     text-decoration: none;
 
     span {
+      align-items: center;
       color: rgba(0, 0, 0, 0.6);
       display: flex;
-      align-items: center;
     }
+
     @media (max-width: 768px) {
       min-width: 70px;
     }
   }
+
   &:hover,
   &:active {
     a {
@@ -244,32 +248,35 @@ const NavList = styled.li`
 `;
 
 const SignOut = styled.div`
-  position: absolute;
-  top: 45px;
   background: white;
   border-radius: 0 0 5px 5px;
-  width: 100px;
-  height: 40px;
-  font-size: 16px;
-  transition-duration: 167ms;
-  text-align: center;
   display: none;
+  font-size: 16px;
+  height: 40px;
+  position: absolute;
+  text-align: center;
+  top: 45px;
+  transition-duration: 167ms;
+  width: 100px;
 `;
 
 const User = styled(NavList)`
   a > svg {
-    width: 24px;
     border-radius: 50%;
+    width: 24px;
   }
+
   a > img {
-    width: 24px;
-    height: 24px;
     border-radius: 50%;
+    height: 24px;
+    width: 24px;
   }
+
   span {
-    display: flex;
     align-items: center;
+    display: flex;
   }
+
   &:hover {
     ${SignOut} {
       align-items: center;

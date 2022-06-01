@@ -5,10 +5,10 @@ const Description = () => {
 };
 
 const Container = styled.div`
-  padding: 0 16px;
-  overflow: hidden;
   color: rgba(0, 0, 0, 0.9);
   font-size: 14px;
+  overflow: hidden;
+  padding: 0 16px;
   text-align: left;
 `;
 

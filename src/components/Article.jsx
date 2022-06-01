@@ -18,19 +18,19 @@ const Article = () => {
 };
 
 const CommonCard = styled.div`
-  text-align: center;
-  overflow: hidden;
-  margin-bottom: 8px;
   background-color: #fff;
   border-radius: 5px;
-  position: relative;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+  margin-bottom: 8px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
 `;
 
 const Container = styled(CommonCard)`
-  padding: 0;
   margin: 0 0 8px;
   overflow: visible;
+  padding: 0;
 `;
 
 export default Article;

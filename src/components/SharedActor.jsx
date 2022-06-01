@@ -22,34 +22,34 @@ const SharedActor = () => {
 };
 
 const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
-  padding: 12px 16px 0;
   margin-bottom: 8px;
+  padding: 12px 16px 0;
 
   a {
     cursor: auto;
-    margin-right: 12px;
-    flex-grow: 1;
-    overflow: hidden;
     display: flex;
+    flex-grow: 1;
+    margin-right: 12px;
+    overflow: hidden;
 
     &:active {
       transform: scale(1);
     }
 
     img {
-      width: 48px;
       height: 48px;
       object-fit: contain;
+      width: 48px;
     }
 
     & > div {
       display: flex;
+      flex-basis: 0;
       flex-direction: column;
       flex-grow: 1;
-      flex-basis: 0;
       margin-left: 8px;
       overflow: hidden;
 
@@ -57,14 +57,14 @@ const Container = styled.div`
         text-align: left;
 
         &:first-child {
+          color: rgba(0, 0, 0, 1);
           font-size: 14px;
           font-weight: 700;
-          color: rgba(0, 0, 0, 1);
         }
 
         &:nth-child(n + 1) {
-          font-size: 12px;
           color: #808080;
+          font-size: 12px;
         }
       }
     }

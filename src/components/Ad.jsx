@@ -16,28 +16,31 @@ const Ad = () => {
 };
 
 const Container = styled.section`
-  min-height: 50px;
-  margin-top: 10px;
-  padding: 16px 0;
-  padding-bottom: 0;
   box-sizing: content-box;
-  text-align: center;
-  text-decoration: underline;
   display: flex;
   justify-content: center;
+  margin-top: 10px;
+  min-height: 50px;
+  padding-bottom: 0;
+  padding: 16px 0;
+  text-align: center;
+  text-decoration: underline;
 
   h5 {
     color: #0a66c2;
     font-size: 14px;
+
     a {
       font-weight: 700;
     }
   }
+
   p {
-    font-size: 14px;
     color: #434649;
+    font-size: 14px;
     font-weight: 600;
   }
+
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 0 5px;

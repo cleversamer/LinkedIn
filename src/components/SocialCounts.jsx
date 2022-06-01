@@ -32,32 +32,32 @@ const SocialCounts = () => {
 };
 
 const Container = styled.ul`
-  line-height: 1.3;
-  display: flex;
   align-items: center;
+  border-bottom: 1px solid #e9e5ef;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 14px;
+  line-height: 1.3;
+  list-style: none;
   overflow: auto;
   padding: 10px 16px;
   width: 100%;
-  border-bottom: 1px solid #e9e5ef;
-  list-style: none;
-  box-sizing: border-box;
-  font-size: 14px;
 
   & * {
     font-weight: 600;
   }
 
   li {
-    display: flex;
     align-items: center;
+    display: flex;
 
     button {
-      display: flex;
       align-items: center;
+      display: flex;
 
       img {
-        width: 20px;
         object-fit: contain;
+        width: 20px;
       }
 
       span {

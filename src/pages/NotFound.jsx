@@ -9,21 +9,21 @@ const NotFound = () => {
 };
 
 const Container = styled.div`
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  font-size: 14px;
   background-color: #f6f6f6;
+  display: grid;
+  font-size: 14px;
+  height: 100vh;
+  place-items: center;
 `;
 
 const Image = styled.img`
-  width: 60%;
-  object-fit: contain;
   margin-bottom: 180px;
+  object-fit: contain;
+  width: 60%;
 
   @media screen and (min-width: 1200px) {
-    width: 30%;
     margin-bottom: 140px;
+    width: 30%;
   }
 `;
 
