@@ -2,7 +2,7 @@
 
 ## 🔴 Live Demo
 
-Not live yet...
+[Click here...](https://samer-linkedin.firebaseapp.com/)
 
 ## Description
 
@@ -16,6 +16,7 @@ LinkedIn Clone with React, Redux, Styled Components, and Firebase.
 - React DOM
 - React Router DOM
 - Styled Components
+- Firebase
 
 ### Installing
 
