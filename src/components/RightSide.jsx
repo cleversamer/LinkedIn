@@ -52,6 +52,10 @@ const Rightside = () => {
 
 const Container = styled.div`
   grid-area: rightside;
+
+  @media screen and (max-width: 768px) {
+    order: 2;
+  }
 `;
 
 const FollowCard = styled.div`

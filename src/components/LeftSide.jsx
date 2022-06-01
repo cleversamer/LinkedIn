@@ -62,6 +62,10 @@ const Leftside = () => {
 
 const Container = styled.div`
   grid-area: leftside;
+
+  @media screen and (max-width: 768px) {
+    order: 1;
+  }
 `;
 
 const ArtCard = styled.div`

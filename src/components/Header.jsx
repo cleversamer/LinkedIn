@@ -95,6 +95,11 @@ const Container = styled.div`
   top: 0;
   width: 100vw;
   z-index: 100;
+
+  @media screen and (max-width: 768px) {
+    box-sizing: content-box;
+    padding: 10px 12px;
+  }
 `;
 
 const Content = styled.div`
@@ -114,8 +119,10 @@ const Search = styled.div`
   opacity: 1;
   flex-grow: 1;
   position: relative;
+
   & > div {
     max-width: 280px;
+
     input {
       border: none;
       box-shadow: none;
@@ -132,6 +139,17 @@ const Search = styled.div`
       vertical-align: text-top;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    div {
+      width: auto;
+
+      input {
+        width: 100%;
+        padding-right: 30px;
+      }
+    }
+  }
 `;
 
 const SearchIcon = styled.div`
@@ -146,6 +164,10 @@ const SearchIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin-left: 5px;
+  }
 `;
 
 const Nav = styled.nav`

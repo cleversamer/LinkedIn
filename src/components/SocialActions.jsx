@@ -31,6 +31,8 @@ const Container = styled.div`
   align-items: center;
   padding: 4px 8px;
   min-height: 40px;
+  overflow-y: hidden;
+  overflow-x: auto;
 
   button {
     display: inline-flex;

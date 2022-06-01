@@ -1,21 +1,23 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Ad from "../components/Ad";
-import Leftside from "../components/LeftSide";
+import LeftSide from "../components/LeftSide";
 import Main from "../components/Main";
-import Rightside from "../components/RightSide";
+import RightSide from "../components/RightSide";
 
 const Home = () => {
   return (
     <Container>
       <Header />
+
       <Ad />
+
       <Layout>
-        <Leftside />
+        <LeftSide />
 
         <Main />
 
-        <Rightside />
+        <RightSide />
       </Layout>
     </Container>
   );
@@ -40,6 +42,7 @@ const Layout = styled.div`
   row-gap: 25px;
   /* grid-template-row: auto; */
   margin: 25px 0;
+
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
