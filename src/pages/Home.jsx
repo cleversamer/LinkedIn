@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Ad from "../components/Ad";
+import Leftside from "../components/LeftSide";
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
       <Header />
       <Ad />
       <Layout>
-        {/* <Leftside /> */}
+        <Leftside />
 
         {/* <Main /> */}
 
