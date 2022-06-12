@@ -13,7 +13,6 @@ const PostModal = ({ onExit }) => {
   const [sharedImage, setSharedImage] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [assetArea, setAssetArea] = useState("");
-  const [progress, setProgress] = useState("");
 
   const handlePost = () => {
     if (!assetArea && !text) {
@@ -21,10 +20,11 @@ const PostModal = ({ onExit }) => {
     }
 
     const postBody = {
-      avatarUrl: user.photoURL,
+      avatarURL: user.photoURL,
       author: user.displayName,
       info: "LinkedIn member",
-      date: serverTimestamp(),
+      date: new Date().toDateString(),
+      timestamp: serverTimestamp(),
       description: text,
       media: {},
     };
@@ -39,13 +39,7 @@ const PostModal = ({ onExit }) => {
       const uploadTask = uploadBytesResumable(storageRef, sharedImage);
       uploadTask.on(
         "state_changed",
-        (snapshot) => {
-          const currentProgeess = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-
-          setProgress(currentProgeess);
-        },
+        (snapshot) => {},
         (err) => alert(err.message),
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
@@ -58,7 +52,7 @@ const PostModal = ({ onExit }) => {
       );
     }
 
-    setTimeout(onExit, 1500);
+    onExit();
   };
 
   const handleChange = (e) => {
@@ -180,14 +174,10 @@ const PostModal = ({ onExit }) => {
             </AssetButton>
           </ShareComment>
 
-          {progress ? (
-            <UploadStatus>Sending post... {progress || 0}%</UploadStatus>
-          ) : (
-            <ButtonGroup>
-              <ResetButton onClick={handleReset}>Reset</ResetButton>
-              <PostButton onClick={handlePost}>Post</PostButton>
-            </ButtonGroup>
-          )}
+          <ButtonGroup>
+            <ResetButton onClick={handleReset}>Reset</ResetButton>
+            <PostButton onClick={handlePost}>Post</PostButton>
+          </ButtonGroup>
         </SharedCreation>
       </Content>
     </Container>
@@ -340,12 +330,6 @@ const PostButton = styled.button`
   background-color: #0a66c2;
   padding: 0 24px;
   border-radius: 25px;
-`;
-
-const UploadStatus = styled.p`
-  margin: auto;
-  margin-right: 0;
-  font-size: 14px;
 `;
 
 const Editor = styled.div`

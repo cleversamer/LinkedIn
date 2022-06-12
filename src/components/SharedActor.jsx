@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const SharedActor = () => {
+const SharedActor = ({ post }) => {
   return (
     <Container>
       <Link to="/">
-        <img src="/assets/user.svg" alt="user" />
+        <img
+          src={post.avatarURL || "/assets/user.svg"}
+          alt={post.author || "user"}
+        />
 
         <div>
-          <span>Title</span>
-          <span>Info</span>
-          <span>Date</span>
+          <span>{post.author}</span>
+          <span>{post.info}</span>
+          <span>{post.date}</span>
         </div>
       </Link>
 

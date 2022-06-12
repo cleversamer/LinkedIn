@@ -1,20 +1,28 @@
-import { useSelector } from "react-redux";
-import { getUserAuth } from "../store/user";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
 import SharedActor from "./SharedActor";
-import Description from "./Description";
-import SharedImage from "./SharedImage";
 import SocialCounts from "./SocialCounts";
 import SocialActions from "./SocialActions";
 
-const Article = () => {
-  const user = useSelector(getUserAuth());
-
+const Article = ({ post }) => {
   return (
     <Container>
-      <SharedActor user={user} />
-      <Description />
-      <SharedImage />
+      <SharedActor post={post} />
+
+      <Description>{post.description}</Description>
+
+      {post.media.imageURL && (
+        <SharedImage>
+          <img src={post.media.imageURL} alt={post.author || "user"} />
+        </SharedImage>
+      )}
+
+      {post.media.videoURL && (
+        <SharedVideo>
+          <ReactPlayer width="100%" url={post.media.videoURL} />
+        </SharedVideo>
+      )}
+
       <SocialCounts />
       <SocialActions />
     </Container>
@@ -35,6 +43,39 @@ const Container = styled(CommonCard)`
   margin: 0 0 8px;
   overflow: visible;
   padding: 0;
+`;
+
+const Description = styled.div`
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 14px;
+  overflow: hidden;
+  padding: 0 16px;
+  text-align: left;
+`;
+
+const SharedImage = styled.div`
+  background-color: #f9fafb;
+  display: block;
+  margin-top: 8px;
+  position: relative;
+  width: 100%;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+`;
+
+const SharedVideo = styled.div`
+  background-color: #f9fafb;
+  display: block;
+  margin-top: 8px;
+  position: relative;
+  width: 100%;
+
+  iframe {
+    width: 100%;
+  }
 `;
 
 export default Article;

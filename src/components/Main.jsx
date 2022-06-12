@@ -1,14 +1,32 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ShareBox from "./ShareBox";
 import Article from "./Article";
+import { onSnapshot } from "firebase/firestore";
+import { postsQuery } from "../firebase";
 
 const Main = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(postsQuery, (snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setPosts(data);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <Container>
       <ShareBox />
 
       <Articles>
-        <Article />
+        {posts.map((post) => (
+          <Article key={post.id} post={post} />
+        ))}
       </Articles>
     </Container>
   );
