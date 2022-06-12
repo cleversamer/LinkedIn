@@ -1,7 +1,18 @@
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../store/user";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Header = () => {
+  const history = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    dispatch(logoutUser());
+    history("/");
+  };
+
   return (
     <Container>
       <Content>
@@ -65,9 +76,7 @@ const Header = () => {
                 <img src="/assets/down-icon.svg" alt="" />
               </Link>
 
-              <SignOut>
-                <Link to="/">Sign Out</Link>
-              </SignOut>
+              <SignOut onClick={handleSignOut}>Sign Out</SignOut>
             </User>
 
             <Work>
@@ -251,13 +260,18 @@ const SignOut = styled.div`
   background: white;
   border-radius: 0 0 5px 5px;
   display: none;
-  font-size: 16px;
+  font-size: 12px;
   height: 40px;
   position: absolute;
   text-align: center;
   top: 45px;
   transition-duration: 167ms;
   width: 100px;
+  cursor: pointer;
+
+  :active {
+    transform: scale(0.99);
+  }
 `;
 
 const User = styled(NavList)`
