@@ -17,6 +17,7 @@ LinkedIn Clone with React, Redux, Styled Components, and Firebase.
 - React Router DOM
 - Styled Components
 - Firebase
+- React Player
 
 ### Installing
 
