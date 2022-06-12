@@ -3,12 +3,18 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getUserAuth } from "../store/user";
 
-const PostModal = ({ isVisible, onExit }) => {
+const PostModal = ({ onExit }) => {
   const [text, setText] = useState("");
   const user = useSelector(getUserAuth());
 
+  const handleEscClick = (e) => {
+    if (e.key === "Escape") {
+      onExit();
+    }
+  };
+
   return (
-    <Container>
+    <Container onKeyDown={handleEscClick}>
       <Content>
         <Header>
           <h2>Create a post</h2>

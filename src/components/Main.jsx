@@ -9,11 +9,6 @@ const Main = () => {
 
       <Articles>
         <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
-        <Article />
       </Articles>
     </Container>
   );

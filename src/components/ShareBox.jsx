@@ -18,12 +18,7 @@ const ShareBox = () => {
         <ShareType imgUrl="/assets/article-icon.svg" title="Article" />
       </ShareTypes>
 
-      {isPostVisible && (
-        <PostModal
-          isVisible={isPostVisible}
-          onExit={() => setPostVisible(false)}
-        />
-      )}
+      {isPostVisible && <PostModal onExit={() => setPostVisible(false)} />}
     </Container>
   );
 };
