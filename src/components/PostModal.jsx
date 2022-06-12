@@ -9,6 +9,7 @@ const PostModal = ({ onExit }) => {
   const [text, setText] = useState("");
   const [sharedImage, setSharedImage] = useState("");
   const [videoLink, setVideoLink] = useState("");
+  const [assetArea, setAssetArea] = useState("");
 
   const handleChange = (e) => {
     const image = e.currentTarget.files[0];
@@ -19,6 +20,19 @@ const PostModal = ({ onExit }) => {
     }
 
     setSharedImage(image);
+  };
+
+  const switchAssetArea = (area) => {
+    setSharedImage("");
+    setVideoLink("");
+    setAssetArea(area);
+  };
+
+  const handleReset = () => {
+    setText("");
+    setSharedImage("");
+    setVideoLink("");
+    setAssetArea("");
   };
 
   const handleEscClick = (e) => {
@@ -54,44 +68,48 @@ const PostModal = ({ onExit }) => {
               autoFocus
             />
 
-            <UploadImage>
-              <input
-                type="file"
-                accept="image/png, image/jpeg, image/jpg, image/gif"
-                name="image"
-                id="file"
-                style={{ display: "none" }}
-                onChange={handleChange}
-              />
+            {assetArea === "image" ? (
+              <UploadImage>
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg, image/gif"
+                  name="image"
+                  id="file"
+                  style={{ display: "none" }}
+                  onChange={handleChange}
+                />
 
-              {sharedImage && (
-                <img src={URL.createObjectURL(sharedImage)} alt="post" />
-              )}
-            </UploadImage>
+                {sharedImage && (
+                  <img src={URL.createObjectURL(sharedImage)} alt="post" />
+                )}
+              </UploadImage>
+            ) : (
+              assetArea === "media" && (
+                <UploadVideo>
+                  <input
+                    id="video"
+                    type="text"
+                    placeholder="Embed a video link"
+                    vlaue={videoLink}
+                    onChange={(e) => setVideoLink(e.currentTarget.value)}
+                  />
 
-            <UploadVideo>
-              <input
-                id="video"
-                type="text"
-                placeholder="Embed a video link"
-                vlaue={videoLink}
-                onChange={(e) => setVideoLink(e.currentTarget.value)}
-              />
-
-              {videoLink && <ReactPlayer width="100%" url={videoLink} />}
-            </UploadVideo>
+                  {videoLink && <ReactPlayer width="100%" url={videoLink} />}
+                </UploadVideo>
+              )
+            )}
           </Editor>
         </SharedContent>
 
         <SharedCreation>
           <AttachAssets>
-            <AssetButton>
+            <AssetButton onClick={() => switchAssetArea("image")}>
               <label htmlFor="file">
                 <img src="/assets/share-image.svg" alt="" />
               </label>
             </AssetButton>
 
-            <AssetButton>
+            <AssetButton onClick={() => switchAssetArea("media")}>
               <label htmlFor="video">
                 <img src="/assets/share-video.svg" alt="" />
               </label>
@@ -105,7 +123,10 @@ const PostModal = ({ onExit }) => {
             </AssetButton>
           </ShareComment>
 
-          <PostButton>Post</PostButton>
+          <ButtonGroup>
+            <ResetButton onClick={handleReset}>Reset</ResetButton>
+            <PostButton>Post</PostButton>
+          </ButtonGroup>
         </SharedCreation>
       </Content>
     </Container>
@@ -240,6 +261,16 @@ const ShareComment = styled.div`
       margin-right: 5px;
     }
   }
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const ResetButton = styled.button`
+  padding: 0 24px;
+  border-radius: 25px;
 `;
 
 const PostButton = styled.button`
