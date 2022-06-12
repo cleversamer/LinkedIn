@@ -1,27 +1,17 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { auth } from "../firebase";
 import { authUser } from "../store/user";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const Hero = () => {
-  const history = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignIn = () => {
     signInWithPopup(auth, new GoogleAuthProvider())
       .then((result) => {
         const user = result.user;
-
-        // Storing the user info in the store
         dispatch(authUser(user));
-
-        // Storing the user info in the local storage
-        localStorage.setItem("token", user);
-
-        // Navigate to the home page
-        history("/");
       })
       .catch((error) => {
         alert(`An error occurred while signing you in: ${error.message}`);

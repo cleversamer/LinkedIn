@@ -1,16 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../store/user";
 import styled from "styled-components";
 
 const Header = () => {
-  const history = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    localStorage.removeItem("token");
     dispatch(logoutUser());
-    history("/");
   };
 
   return (
