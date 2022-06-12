@@ -14,7 +14,7 @@ const Header = () => {
     <Container>
       <Content>
         <Logo>
-          <Link to="/home">
+          <Link to="/">
             <img src="/assets/home-logo.svg" alt="" />
           </Link>
         </Logo>

@@ -8,12 +8,11 @@ import NotFound from "./pages/NotFound";
 
 const App = () => {
   const user = useSelector(getUserAuth());
+  console.log(user);
 
   return (
     <Container>
       <Routes>
-        {!user && <Route path="/login" element={<Navigate to="/" replace />} />}
-
         <Route path="/not-found" element={<NotFound />} />
 
         {user ? (
@@ -22,7 +21,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
         )}
 
-        <Route path="*" element={<Navigate to="/not-found" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Container>
   );
