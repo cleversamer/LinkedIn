@@ -5,7 +5,7 @@ const SharedActor = () => {
   return (
     <Container>
       <Link to="/">
-        <img src="/assets/user.svg" alt="" />
+        <img src="/assets/user.svg" alt="user" />
 
         <div>
           <span>Title</span>

@@ -1,7 +1,18 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getUserAuth } from "../store/user";
 
 const Leftside = () => {
+  const user = useSelector(getUserAuth());
+
+  const getDisplayName = () => {
+    let displayName = user?.displayName.split(" ")[0];
+    displayName = displayName || "there";
+    displayName += "!";
+    return displayName;
+  };
+
   return (
     <Container>
       <ArtCard>
@@ -9,8 +20,11 @@ const Leftside = () => {
           <CardBackground />
 
           <Link to="/">
-            <Photo />
-            <PhotoLink>Welcome, there!</PhotoLink>
+            <Photo
+              src={user?.photoURL || "/assets/user.svg"}
+              alt={user?.displayName || "user"}
+            />
+            <PhotoLink>Welcome, {getDisplayName()}</PhotoLink>
           </Link>
 
           <Link to="/">
@@ -95,13 +109,13 @@ const CardBackground = styled.div`
   margin: -12px -12px 0;
 `;
 
-const Photo = styled.div`
-  background-clip: content-box;
+const Photo = styled.img`
+  /* background-clip: content-box;
   background-color: white;
-  background-image: url("/assets/photo.svg");
+  background-image: ${({ img }) => img};
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 60%;
+  background-size: 60%; */
   border-radius: 50%;
   border: 2px solid white;
   box-shadow: none;

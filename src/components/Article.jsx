@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { getUserAuth } from "../store/user";
 import styled from "styled-components";
 import SharedActor from "./SharedActor";
 import Description from "./Description";
@@ -6,9 +8,11 @@ import SocialCounts from "./SocialCounts";
 import SocialActions from "./SocialActions";
 
 const Article = () => {
+  const user = useSelector(getUserAuth());
+
   return (
     <Container>
-      <SharedActor />
+      <SharedActor user={user} />
       <Description />
       <SharedImage />
       <SocialCounts />

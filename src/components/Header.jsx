@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logoutUser } from "../store/user";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserAuth, logoutUser } from "../store/user";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const user = useSelector(getUserAuth());
 
   const handleSignOut = () => {
     dispatch(logoutUser());
@@ -68,9 +69,19 @@ const Header = () => {
 
             <User>
               <Link to="/">
-                <img src="/assets/user.svg" alt="" />
-                <span>Me</span>
-                <img src="/assets/down-icon.svg" alt="" />
+                <img
+                  src={user?.photoURL || "/assets/user.svg"}
+                  alt={user?.displayName || "user"}
+                />
+
+                <div>
+                  <span>Me</span>
+                  <img
+                    className="down-icon"
+                    src="/assets/down-icon.svg"
+                    alt=""
+                  />
+                </div>
               </Link>
 
               <SignOut onClick={handleSignOut}>Sign Out</SignOut>
@@ -277,10 +288,23 @@ const User = styled(NavList)`
     width: 24px;
   }
 
+  a > div {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
   a > img {
     border-radius: 50%;
     height: 24px;
     width: 24px;
+    object-fit: contain;
+  }
+
+  a > .down-icon {
+    width: auto;
+    height: auto;
+    margin: 0;
   }
 
   span {

@@ -6,6 +6,7 @@ const Main = () => {
   return (
     <Container>
       <ShareBox />
+
       <Articles>
         <Article />
         <Article />

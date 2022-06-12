@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { getUserAuth } from "../store/user";
 
 const ShareBox = () => {
+  const user = useSelector(getUserAuth());
+
   return (
     <Container>
       <div>
-        <img src="/assets/user.svg" alt="" />
+        <img
+          src={user?.photoURL || "/assets/user.svg"}
+          alt={user.displayName || "user"}
+        />
         <button>Start a post</button>
       </div>
 
