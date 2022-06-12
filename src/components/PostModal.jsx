@@ -4,8 +4,20 @@ import { useSelector } from "react-redux";
 import { getUserAuth } from "../store/user";
 
 const PostModal = ({ onExit }) => {
-  const [text, setText] = useState("");
   const user = useSelector(getUserAuth());
+  const [text, setText] = useState("");
+  const [sharedImage, setSharedImage] = useState("");
+
+  const handleChange = (e) => {
+    const image = e.currentTarget.files[0];
+
+    if (!image) {
+      alert("Please select an image.");
+      return;
+    }
+
+    setSharedImage(image);
+  };
 
   const handleEscClick = (e) => {
     if (e.key === "Escape") {
@@ -38,14 +50,31 @@ const PostModal = ({ onExit }) => {
               onChange={(e) => setText(e.currentTarget.value)}
               placeholder="What do you want to talk about?"
               autoFocus
-            ></textarea>
+            />
+
+            <UploadImage>
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
+                name="image"
+                id="file"
+                style={{ display: "none" }}
+                onChange={handleChange}
+              />
+
+              {sharedImage && (
+                <img src={URL.createObjectURL(sharedImage)} alt="post" />
+              )}
+            </UploadImage>
           </Editor>
         </SharedContent>
 
         <SharedCreation>
           <AttachAssets>
             <AssetButton>
-              <img src="/assets/share-image.svg" alt="" />
+              <label htmlFor="file">
+                <img src="/assets/share-image.svg" alt="" />
+              </label>
             </AssetButton>
 
             <AssetButton>
@@ -166,6 +195,10 @@ const AssetButton = styled.button`
   color: rgba(0, 0, 0, 0.5);
   transition-duration: 167ms;
 
+  label {
+    cursor: pointer;
+  }
+
   &:active {
     transform: scale(0.95);
   }
@@ -214,6 +247,14 @@ const Editor = styled.div`
     height: 35px;
     font-size: 16px;
     margin-bottom: 20px;
+  }
+`;
+
+const UploadImage = styled.div`
+  text-align: center;
+
+  img {
+    width: 100%;
   }
 `;
 
