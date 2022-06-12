@@ -292,6 +292,10 @@ const User = styled(NavList)`
     display: flex;
     align-items: center;
     gap: 3px;
+
+    @media screen and (max-width: 768px) {
+      order: -1;
+    }
   }
 
   a > img {
@@ -301,10 +305,14 @@ const User = styled(NavList)`
     object-fit: contain;
   }
 
-  a > .down-icon {
+  a .down-icon {
     width: auto;
     height: auto;
     margin: 0;
+
+    @media screen and (max-width: 768px) {
+      transform: rotate(180deg);
+    }
   }
 
   span {

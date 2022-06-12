@@ -1,41 +1,29 @@
+import { useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { getUserAuth } from "../store/user";
+import PostModal from "./PostModal";
+import PostRow from "./PostRow";
+import ShareType from "./ShareType";
 
 const ShareBox = () => {
-  const user = useSelector(getUserAuth());
+  const [isPostVisible, setPostVisible] = useState(false);
 
   return (
     <Container>
-      <div>
-        <img
-          src={user?.photoURL || "/assets/user.svg"}
-          alt={user.displayName || "user"}
+      <PostRow onShowPost={() => setPostVisible(true)} />
+
+      <ShareTypes>
+        <ShareType imgUrl="/assets/photo-icon.svg" title="Photo" />
+        <ShareType imgUrl="/assets/video-icon.svg" title="Video" />
+        <ShareType imgUrl="/assets/event-icon.svg" title="Event" />
+        <ShareType imgUrl="/assets/article-icon.svg" title="Article" />
+      </ShareTypes>
+
+      {isPostVisible && (
+        <PostModal
+          isVisible={isPostVisible}
+          onExit={() => setPostVisible(false)}
         />
-        <button>Start a post</button>
-      </div>
-
-      <div>
-        <button>
-          <img src="/assets/photo-icon.svg" alt="" />
-          <span>Photo</span>
-        </button>
-
-        <button>
-          <img src="/assets/video-icon.svg" alt="" />
-          <span>Video</span>
-        </button>
-
-        <button>
-          <img src="/assets/event-icon.svg" alt="" />
-          <span>Event</span>
-        </button>
-
-        <button>
-          <img src="/assets/article-icon.svg" alt="" />
-          <span>Article</span>
-        </button>
-      </div>
+      )}
     </Container>
   );
 };
@@ -57,80 +45,22 @@ const Container = styled(CommonCard)`
   flex-direction: column;
   margin: 0 0 8px;
 
-  div {
-    button {
-      align-items: center;
-      color: rgba(0, 0, 0, 06);
-      display: flex;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.5;
-      min-height: 48px;
-    }
-
-    &:first-child {
-      align-items: center;
-      display: flex;
-      padding: 8px 16px 0px 16px;
-
-      img {
-        border-radius: 50%;
-        cursor: pointer;
-        margin-right: 10px;
-        transition-duration: 167ms;
-        width: 45px;
-
-        &:active {
-          transform: scale(0.97);
-        }
-      }
-
-      button {
-        background-color: #fff;
-        border-radius: 35px;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        color: rgba(0, 0, 0, 0.6);
-        cursor: pointer;
-        flex-grow: 1;
-        margin: 4px 0;
-        padding-left: 16px;
-        text-align: left;
-        transition-duration: 167ms;
-
-        &:active {
-          transform: scale(0.99);
-        }
-      }
-    }
-
-    &:nth-child(2) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding-bottom: 4px;
-
-      button {
-        cursor: pointer;
-        transition-duration: 167ms;
-
-        img {
-          margin: 0 4px 0 -2px;
-        }
-
-        span {
-          color: #70b5f9;
-        }
-
-        &:hover span {
-          color: inherit;
-        }
-
-        &:active {
-          transform: scale(0.98);
-        }
-      }
-    }
+  button {
+    align-items: center;
+    color: rgba(0, 0, 0, 06);
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    min-height: 48px;
   }
+`;
+
+const ShareTypes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 4px;
 `;
 
 export default ShareBox;

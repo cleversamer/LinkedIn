@@ -19,5 +19,3 @@ const db = getFirestore();
 export const auth = getAuth(app);
 
 const storage = getStorage(app);
-
-const signIn = () => {};
