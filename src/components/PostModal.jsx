@@ -3,6 +3,9 @@ import styled from "styled-components";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { getUserAuth } from "../store/user";
+import { addDoc, serverTimestamp } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage, postsRef } from "../firebase";
 
 const PostModal = ({ onExit }) => {
   const user = useSelector(getUserAuth());
@@ -10,6 +13,53 @@ const PostModal = ({ onExit }) => {
   const [sharedImage, setSharedImage] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [assetArea, setAssetArea] = useState("");
+  const [progress, setProgress] = useState("");
+
+  const handlePost = () => {
+    if (!assetArea && !text) {
+      return;
+    }
+
+    const postBody = {
+      avatarUrl: user.photoURL,
+      author: user.displayName,
+      info: "LinkedIn member",
+      date: serverTimestamp(),
+      description: text,
+      media: {},
+    };
+
+    if (!assetArea) {
+      addDoc(postsRef, postBody);
+    } else if (videoLink) {
+      postBody.media.videoURL = videoLink;
+      addDoc(postsRef, postBody);
+    } else if (sharedImage) {
+      const storageRef = ref(storage, `/files/${sharedImage}`);
+      const uploadTask = uploadBytesResumable(storageRef, sharedImage);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const currentProgeess = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          setProgress(currentProgeess);
+        },
+        (err) => alert(err.message),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref)
+            .then((result) => {
+              postBody.media.imageURL = result;
+              addDoc(postsRef, postBody);
+            })
+            .catch((err) => alert(err.message));
+        }
+      );
+    }
+
+    setTimeout(onExit, 1500);
+  };
 
   const handleChange = (e) => {
     const image = e.currentTarget.files[0];
@@ -94,7 +144,14 @@ const PostModal = ({ onExit }) => {
                     onChange={(e) => setVideoLink(e.currentTarget.value)}
                   />
 
-                  {videoLink && <ReactPlayer width="100%" url={videoLink} />}
+                  {videoLink && (
+                    <ReactPlayer
+                      width="100%"
+                      url={videoLink}
+                      onError={() => setVideoLink("")}
+                      playing
+                    />
+                  )}
                 </UploadVideo>
               )
             )}
@@ -123,10 +180,14 @@ const PostModal = ({ onExit }) => {
             </AssetButton>
           </ShareComment>
 
-          <ButtonGroup>
-            <ResetButton onClick={handleReset}>Reset</ResetButton>
-            <PostButton>Post</PostButton>
-          </ButtonGroup>
+          {progress ? (
+            <UploadStatus>Sending post... {progress || 0}%</UploadStatus>
+          ) : (
+            <ButtonGroup>
+              <ResetButton onClick={handleReset}>Reset</ResetButton>
+              <PostButton onClick={handlePost}>Post</PostButton>
+            </ButtonGroup>
+          )}
         </SharedCreation>
       </Content>
     </Container>
@@ -265,6 +326,7 @@ const ShareComment = styled.div`
 
 const ButtonGroup = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
 `;
 
@@ -280,6 +342,12 @@ const PostButton = styled.button`
   border-radius: 25px;
 `;
 
+const UploadStatus = styled.p`
+  margin: auto;
+  margin-right: 0;
+  font-size: 14px;
+`;
+
 const Editor = styled.div`
   padding: 12px 24px;
 
@@ -292,7 +360,7 @@ const Editor = styled.div`
   input {
     width: 100%;
     height: 35px;
-    font-size: 16px;
+    font-size: 1.1rem;
     margin-bottom: 20px;
   }
 `;
