@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { getUserAuth } from "../store/user";
 
@@ -7,6 +8,7 @@ const PostModal = ({ onExit }) => {
   const user = useSelector(getUserAuth());
   const [text, setText] = useState("");
   const [sharedImage, setSharedImage] = useState("");
+  const [videoLink, setVideoLink] = useState("");
 
   const handleChange = (e) => {
     const image = e.currentTarget.files[0];
@@ -66,6 +68,18 @@ const PostModal = ({ onExit }) => {
                 <img src={URL.createObjectURL(sharedImage)} alt="post" />
               )}
             </UploadImage>
+
+            <UploadVideo>
+              <input
+                id="video"
+                type="text"
+                placeholder="Embed a video link"
+                vlaue={videoLink}
+                onChange={(e) => setVideoLink(e.currentTarget.value)}
+              />
+
+              {videoLink && <ReactPlayer width="100%" url={videoLink} />}
+            </UploadVideo>
           </Editor>
         </SharedContent>
 
@@ -78,7 +92,9 @@ const PostModal = ({ onExit }) => {
             </AssetButton>
 
             <AssetButton>
-              <img src="/assets/share-video.svg" alt="" />
+              <label htmlFor="video">
+                <img src="/assets/share-video.svg" alt="" />
+              </label>
             </AssetButton>
           </AttachAssets>
 
@@ -257,5 +273,7 @@ const UploadImage = styled.div`
     width: 100%;
   }
 `;
+
+const UploadVideo = styled.div``;
 
 export default PostModal;
